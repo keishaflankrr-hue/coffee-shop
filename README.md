@@ -12,4 +12,5 @@ This is a <i>website</i> for a coffee shop
 - Part 1 Details
 - Sitemap 
 ## Changelog:Begin tracking chnages and improvements to the website. 
+
 - References 
