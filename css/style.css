@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.site-header{
+    display: flex;/*puts logo and nav side by side */
+    justify-content: space-between;/*logo left,links right */ 
+    align-items: center;/* vertically centers both */
+    padding: 1rem 2rem;
+    background-color: magenta;
+}
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.nav-links{
+    display:flex;
+    gap:1.5rem;
+    list-style: none;
+    padding:0;
+}
+nav-links a{
+    color:#fff;
+    text-decoration:none;  
+}
