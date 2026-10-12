@@ -4,5 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" <title>My First Webopage</title>
+    <title>Enquiry | Wabi Sabi Coffee Shop</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-</DOCTYPE>
+
+<body>
+
+    <!--HEADER + NAVIGATION (same on every page)-->
+    <header class="site-header">
+        <a href="index.html" class="logo">Wabi Sabi</a>
+
+        <nav>
+            <ul class="nav-links">
+                <li>,<a href="index.html">Home</a></li>
+                <li>,<a href="services.html">Menu</a></li>
+                <li>,<a href="about.html">About</a></li>
+                <li>,<a href="enquiry.html" aria-current="page">Enquiry</a></li>
+                <li>,<a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--MAIN CONTENT-->
+    <main>
+
+        <h1>Enquiry Form</h1>
+
+        <p class="enquiry-intro">Whether you have a question about our coffee or matcha, a collaboration idea or you
+            just want to say hi, we'd love to hear from you.
+        </p>
+        <section class="enquiry-form section">
+            <h2>Send Us a Message</h2>
+
+            <!--actz="#"is a placeholder for the form action attribute-->
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">phone number (optional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Reason for contacting us</label>
+                    <select id="reason" name="reason" required>
+                        <option value="">Please choose one</option>
+                        <option value="coffe-question">Question about our coffee</option>
+                        <option value="collaboration">Collaboration</option>
+                        <option value="say hi">Say Hi</option>
+                        <option value="other">Something else</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <!--Footer(samw on every page )-->
+    <footer class="site-footer">
+
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="about.html">Our Story</a></li>
+
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="products.html">Enquiry</a></li>
+                <li><a href="#" Gift Cards</a></a></li><!--placeholder: link to a page or section 1-->
+                <li><a href="#">Events</a></li> <!--placeholder: link to a page or section 1-->
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><a href="contact.html#locations">Locations</a></li>
+                <li><a href="#">Rewwards</a></li>
+                <li><a href="contact.html#faqs">FAQs</a></li>
+                <li><a href="#" Social Media>Enquiry</a></li><!--placeholder:swap in your instagram/facebook URL-->
+                <li><a href="enquiry.html">Email us for inquiries</a></li>
+            </ul>
+        </div>
+
+    </footer>
+</body>
+
+</html>
