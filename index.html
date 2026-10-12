@@ -3,6 +3,81 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" <title>My First Webopage</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>My First Webpage</title>
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
-</DOCTYPE>
+
+<body>
+
+    <!-- HEADER + NAVIGATION (same on every page) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">Wabi Sabi</a>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <img src="images/matcha bubbles.jpg" alt="A cup of matcha bubble tea on a wooden table at Wabi Sabi">
+        <section class="hero">
+            <!-- Replace the file name in src with your own image -->
+            <img src="images/hero.jpg" alt="A cup of matcha latte on a wooden table at Wabi Sabi">
+
+            <div class="hero-text">
+                <h1>Welcome to Wabi Sabi</h1>
+                <p>
+                    A quiet coffee and matcha shop where you can pause, breathe and
+                    be present. Imperfect, unhurried and made for you.
+                </p>
+                <a href="products.html" class="button">View Our Menu</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (same on every page) -->
+    <footer class="site-footer">
+
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="about.html">Our Story</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="products.html">Menu</a></li>
+                <li><a href="#">Gift Cards</a></li> <!-- placeholder: link to a page or section later -->
+                <li><a href="#">Events</a></li> <!-- placeholder: no events page in the 5-page structure -->
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><a href="contact.html#locations">Locations</a></li>
+                <li><a href="#">Rewards</a></li> <!-- placeholder -->
+                <li><a href="contact.html#faqs">FAQs</a></li>
+                <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your Instagram/Facebook URL -->
+                <li><a href="enquiry.html">Email us for inquiries</a></li>
+            </ul>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

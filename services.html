@@ -3,6 +3,161 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" <title>My First Webopage</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>My First Webpage</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-</DOCTYPE>
+
+<body>
+
+    <!-- HEADER + NAVIGATION (same on every page) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">Wabi Sabi</a>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html" aria-current="page">Products</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <h1>Our Menu</h1>
+        <p class="menu-intro">
+            A small, simple menu of matcha and coffee, made with care.
+        </p>
+
+        <!-- MATCHA MENU -->
+        <section class="menu-section" id="matcha">
+            <h2>Matcha</h2>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Strawberry Matcha Iced Latte</h3>
+                    <span class="price">R50</span>
+                </div>
+                <p class="menu-item-description">
+                    Matcha layered over strawberry and milk, served over ice.
+                </p>
+                <p class="menu-item-serving">Iced</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Vanilla Matcha Latte</h3>
+                    <span class="price">R50</span>
+                </div>
+                <p class="menu-item-description">
+                    Smooth matcha with a touch of vanilla and milk.
+                </p>
+                <p class="menu-item-serving">Hot or iced</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Hibiscus Matcha</h3>
+                    <span class="price">R50</span>
+                </div>
+                <p class="menu-item-description">
+                    Earthy matcha paired with bright, floral hibiscus.
+                </p>
+                <p class="menu-item-serving">Hot or iced</p>
+            </article>
+        </section>
+
+        <!-- COFFEE MENU: edit this list to match your own regulars -->
+        <section class="menu-section" id="coffee">
+            <h2>Coffee</h2>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Espresso</h3>
+                    <span class="price">R26</span>
+                </div>
+                <p class="menu-item-description">A short, strong shot of coffee.</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Americano</h3>
+                    <span class="price">R36</span>
+                </div>
+                <p class="menu-item-description">Espresso topped with hot water.</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Cappuccino</h3>
+                    <span class="price">R50</span>
+                </div>
+                <p class="menu-item-description">Espresso with steamed milk and a thick layer of foam.</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Flat White</h3>
+                    <span class="price">R36</span>
+                </div>
+                <p class="menu-item-description">Espresso with velvety, lightly textured milk.</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Latte</h3>
+                    <span class="price">R56</span>
+                </div>
+                <p class="menu-item-description">Espresso with plenty of steamed milk.</p>
+            </article>
+
+            <article class="menu-item">
+                <div class="menu-item-header">
+                    <h3>Mocha</h3>
+                    <span class="price">R65</span>
+                </div>
+                <p class="menu-item-description">Espresso, chocolate and steamed milk.</p>
+            </article>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (same on every page) -->
+    <footer class="site-footer">
+
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="about.html">Our Story</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="products.html">Menu</a></li>
+                <li><a href="#">Gift Cards</a></li> <!-- placeholder: link to a page or section later -->
+                <li><a href="#">Events</a></li> <!-- placeholder: no events page in the 5-page structure -->
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><a href="contact.html#locations">Locations</a></li>
+                <li><a href="#">Rewards</a></li> <!-- placeholder -->
+                <li><a href="contact.html#faqs">FAQs</a></li>
+                <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your Instagram/Facebook URL -->
+                <li><a href="enquiry.html">Email us for inquiries</a></li>
+            </ul>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
