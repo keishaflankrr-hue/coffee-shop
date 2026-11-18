@@ -18,7 +18,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="products.html" aria-current="page">Products</a></li>
+                <li><a href="services.html" aria-current="page">Menu</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -52,50 +52,81 @@
             <h2>Matcha</h2>
 
             <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Strawberry Matcha Iced Latte</h3>
-                    <span class="price">R50</span>
-                </div>
-                <p class="menu-item-description">
-                    Matcha layered over strawberry and milk, served over ice.
-                </p>
-                <div class="serving-choice">
-                    <p class="serving-label">choose your temperature:</p>
-                    <div class="serving-buttons" role="group" aria-label="Vanilla Matcha Latte temprature">
-                        <button>
-                            type="button"
-                            class="serving-button selected"
-                            data-serving="hot"
-                            aria-pressed="true">
-                            Hot
-                        </button>
 
-                        <button> type="button"
-                            class="serving-button"
-                            data-serving="iced"
-                            aria-pressed="false">
-                            Iced
-
-                        </button>
-                    </div>
-                    <p class="serving-feedback" aria-live="polite">
-                        selected: Hot
-                    </p>
-                </div>
-
-            </article>
-
-            <article class="menu-item">
                 <div class="menu-item-header">
                     <h3>Vanilla Matcha Latte</h3>
                     <span class="price">R50</span>
                 </div>
+
                 <p class="menu-item-description">
                     Smooth matcha with a touch of vanilla and milk.
                 </p>
-                <p class="menu-item-serving">Hot or iced</p>
-            </article>
 
+                <!-- TEMPERATURE OPTIONS -->
+
+                <div class="serving-choice">
+
+                    <p class="serving-label">
+                        Choose your temperature:
+                    </p>
+
+                    <div class="serving-buttons">
+
+                        <button type="button" class="serving-button selected" data-serving="hot" aria-pressed="true">
+                            Hot
+                        </button>
+
+                        <button type="button" class="serving-button" data-serving="iced" aria-pressed="false">
+                            Iced
+                        </button>
+
+                    </div>
+
+                    <p class="serving-feedback" aria-live="polite">
+                        Selected: Hot
+                    </p>
+
+                </div>
+
+            </article>
+            <article class="menu-item">
+
+                <div class="menu-item-header">
+                    <h3>Vanilla Matcha Latte</h3>
+                    <span class="price">R50</span>
+                </div>
+
+                <p class="menu-item-description">
+                    Smooth matcha with a touch of vanilla and milk.
+                </p>
+
+                <!-- TEMPERATURE OPTIONS -->
+
+                <div class="serving-choice">
+
+                    <p class="serving-label">
+                        Choose your temperature:
+                    </p>
+
+                    <div class="serving-buttons">
+
+                        <button type="button" class="serving-button selected" data-serving="hot" aria-pressed="true">
+                            Hot
+                        </button>
+
+                        <button type="button" class="serving-button" data-serving="iced" aria-pressed="false">
+                            Iced
+                        </button>
+
+                    </div>
+
+                    <p class="serving-feedback" aria-live="polite">
+                        Selected: Hot
+                    </p>
+
+                </div>
+
+            </article>
             <article class="menu-item">
                 <div class="menu-item-header">
                     <h3>Hibiscus Matcha</h3>
@@ -104,15 +135,32 @@
                 <p class="menu-item-description">
                     Earthy matcha paired with bright, floral hibiscus.
                 </p>
-                <p class="menu-item-serving">Hot or iced</p>
+                <div class="serving-choice">
+
+                    <p class="serving-label">Choose your temperature:</p>
+
+                    <div class="serving-buttons" role="group" aria-label="Vanilla Matcha Latte temperature">
+
+                        <button type="button" class="serving-button selected" data-serving="Hot" aria-pressed="true">
+                            Hot
+                        </button>
+
+                        <button type="button" class="serving-button" data-serving="Iced" aria-pressed="false">
+                            Iced
+                        </button>
+
+                    </div>
+
+                    <p class="serving-feedback" aria-live="polite">
+                        Selected: Hot
+                    </p>
+
+                </div>
             </article>
         </section>
 
         <!-- COFFEE MENU -->
-        <section class="menu-section" id="coffee">
-            role="tabpanel"
-            aria-labelledby="coffee-tab">
-            <hidden></hidden>
+        <section class="menu-section" id="coffee" role="tabpanel" aria-labelledby="coffee-tab" hidden>
             <h2>Coffee</h2>
 
             <article class="menu-item">
@@ -179,7 +227,7 @@
         <div class="footer-column">
             <h3>Customer Service</h3>
             <ul>
-                <li><a href="products.html">Menu</a></li>
+                <li><a href="services.html">Menu</a></li>
                 <li><a href="#">Gift Cards</a></li> <!-- placeholder: link to a page or section later -->
                 <li><a href="#">Events</a></li> <!-- placeholder: no events page in the 5-page structure -->
             </ul>
