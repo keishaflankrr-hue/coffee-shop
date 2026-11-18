@@ -340,3 +340,24 @@ function setupGallery() {
         }
     });
 }
+const products = [
+  { name: "Vanilla Matcha ", category: "Matcha ", price: 50 },
+  { name: "Hibiscus Matcha", category: "Matcha ", price: 40 },
+  { name: "Regular Matcha Latte", category: "Matcha ", price: 30 }
+];
+
+// Filter by category and search text (case-insensitive)
+const searchText = "matcha";
+const selectedCategory = "Matcha ";
+
+const filtered = products.filter(item => {
+  const matchesCategory = selectedCategory === "All" || item.category === selectedCategory;
+  const matchesSearch = item.name.toLowerCase().includes(searchText.toLowerCase());
+  return matchesCategory && matchesSearch;
+});
+// Lowest price to highest price
+const sortedByPrice = [...filtered].sort((a, b) => a.price - b.price);
+
+// Alphabetical A to Z
+const sortedByName = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+
