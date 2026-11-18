@@ -32,9 +32,23 @@
         <p class="menu-intro">
             A small, simple menu of matcha and coffee, made with care.
         </p>
+        <!-- MENU TABS -->
+        <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+
+            <button class="menu-tab active" id="matcha-tab" type="button" role="tab" aria-selected="true"
+                aria-controls="matcha" data-target="matcha">
+                Matcha
+            </button>
+
+            <button class="menu-tab" id="coffee-tab" type="button" role="tab" aria-selected="false"
+                aria-controls="coffee" data-target="coffee">
+                Coffee
+            </button>
+
+        </div>
 
         <!-- MATCHA MENU -->
-        <section class="menu-section" id="matcha">
+        <section class="menu-section active" id="matcha" role="tabpanel" aria-labelledby="matcha-tab">
             <h2>Matcha</h2>
 
             <article class="menu-item">
@@ -45,7 +59,30 @@
                 <p class="menu-item-description">
                     Matcha layered over strawberry and milk, served over ice.
                 </p>
-                <p class="menu-item-serving">Iced</p>
+                <div class="serving-choice">
+                    <p class="serving-label">choose your temperature:</p>
+                    <div class="serving-buttons" role="group" aria-label="Vanilla Matcha Latte temprature">
+                        <button>
+                            type="button"
+                            class="serving-button selected"
+                            data-serving="hot"
+                            aria-pressed="true">
+                            Hot
+                        </button>
+
+                        <button> type="button"
+                            class="serving-button"
+                            data-serving="iced"
+                            aria-pressed="false">
+                            Iced
+
+                        </button>
+                    </div>
+                    <p class="serving-feedback" aria-live="polite">
+                        selected: Hot
+                    </p>
+                </div>
+
             </article>
 
             <article class="menu-item">
@@ -71,8 +108,11 @@
             </article>
         </section>
 
-        <!-- COFFEE MENU: edit this list to match your own regulars -->
+        <!-- COFFEE MENU -->
         <section class="menu-section" id="coffee">
+            role="tabpanel"
+            aria-labelledby="coffee-tab">
+            <hidden></hidden>
             <h2>Coffee</h2>
 
             <article class="menu-item">
@@ -157,7 +197,7 @@
         </div>
 
     </footer>
-
+    <script src="js/script.js"></script>
 </body>
 
 </html>
