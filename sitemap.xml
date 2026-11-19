@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- HOMEPAGE -->
+
+    <url>
+        <loc>https://keishaflankrr-hue.github.io/coffee-shop/</loc>
+    </url>
+
+
+    <!-- ABOUT PAGE -->
+
+    <url>
+        <loc>https://keishaflankrr-hue.github.io/coffee-shop/about.html</loc>
+    </url>
+
+
+    <!-- MENU PAGE -->
+
+    <url>
+        <loc>https://keishaflankrr-hue.github.io/coffee-shop/services.html</loc>
+    </url>
+
+
+    <!-- GALLERY PAGE -->
+
+    <url>
+        <loc>https://keishaflankrr-hue.github.io/coffee-shop/gallery.html</loc>
+    </url>
+
+
+    <!-- CONTACT PAGE -->
+
+    <url>
+        <loc>https://keishaflankrr-hue.github.io/coffee-shop/contact.html</loc>
+    </url>
+
+
+    <!-- ENQUIRY PAGE -->
+
+    <url>
+        <loc>https://keishaflankrr-hue.github.io/coffee-shop/enquiry.html</loc>
+    </url>
+
+</urlset>

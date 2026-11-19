@@ -1,0 +1,10 @@
+# Wabi Sabi Coffee Shop
+# Search engine crawler instructions
+
+User-agent: *
+
+# Allow crawlers to access public website pages
+Allow: /
+
+# Location of the website sitemap
+Sitemap: Sitemap: https://keishaflankrr-hue.github.io/coffee-shop/sitemap.xml
