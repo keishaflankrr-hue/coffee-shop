@@ -6,30 +6,35 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Contact | Wabi Sabi Coffee Shop</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Leaflet map library (styles) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 
 <body>
 
-    <!--HEADER + NAVIGATION (same on every page)-->
+    <!-- HEADER + NAVIGATION (same on every page) -->
     <header class="site-header">
         <a href="index.html" class="logo">Wabi Sabi</a>
 
         <nav>
             <ul class="nav-links">
-                <li>,<a href="index.html">Home</a></li>
-                <li>,<a href="services.html">Menu</a></li>
-                <li>,<a href="about.html">About</a></li>
-                <li>,<a href="enquiry.html">Enquiry</a></li>
-                <li>,<a href="contact.html" aria-current="page">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <!--MAIN CONTENT-->
+
+    <!-- MAIN CONTENT -->
     <main>
 
         <h1>Contact Us</h1>
 
-        <!--Shop contact information-->
+        <!-- Shop contact information -->
         <section class="contact-info">
             <h2>Get in Touch</h2>
 
@@ -47,59 +52,151 @@
             </address>
 
             <h3>Opening Hours</h3>
+            <!-- js/script.js reads the data-* attributes to show an "Open now / Closed" badge.
+                 Days: 0 = Sunday ... 6 = Saturday. Times use the 24-hour clock. A day with no data is closed. -->
             <ul class="opening-hours">
-                <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
-                <li>Saturday: 8:00 AM - 4:00 PM</li>
+                <li data-days="1,2,3,4,5" data-open="07:00" data-close="18:00">Monday - Friday: 7:00 AM - 6:00 PM</li>
+                <li data-days="6" data-open="08:00" data-close="16:00">Saturday: 8:00 AM - 4:00 PM</li>
                 <li>Sunday: Closed</li>
             </ul>
         </section>
 
-        <!--Map. The id lets the foote "Locationa" Link for your own address (see notes)-->
-        <section class="map section" id="location">
+        <!-- Interactive map (js/map.js). The id lets the footer "Locations" link jump here. -->
+        <section class="map-section" id="location">
             <h2>Our Location</h2>
 
-            <!--Replace the src with the embed code for your own address (see notes)-->
-            <iframe title="Map showing the location of Wabi Sabi coffee shop"
-                width="100%" height="400" style="border:0;" loading="lazy" allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <div id="map" class="map" role="region" aria-label="Map showing the location of Wabi Sabi Coffee Shop"></div>
+
+            <div class="map-tools">
+                <button type="button" class="button" id="locate-button">Show my distance</button>
+                <a class="button button-outline" id="directions-link" target="_blank" rel="noopener"
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Pretoria+East+Gauteng">Get directions</a>
+                <p class="map-status" id="map-status" aria-live="polite">Your location is only used on this page to
+                    measure the distance. We don&rsquo;t store it.</p>
+            </div>
+        </section>
+
+        <!-- FAQs: an accordion (jQuery in js/script.js). The answers are sample text. Edit them to match the shop. -->
+        <section class="faq-section" id="faqs">
+            <h2>FAQs</h2>
+
+            <div class="accordion">
+
+                <div class="accordion-item">
+                    <h3 class="accordion-heading">
+                        <button type="button" class="accordion-trigger" id="faq-1-button" aria-expanded="false"
+                            aria-controls="faq-1">
+                            What are your opening hours?
+                            <span class="accordion-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="accordion-panel" id="faq-1" role="region" aria-labelledby="faq-1-button">
+                        <p>We&rsquo;re open Monday to Friday from 7:00 AM to 6:00 PM, and on Saturdays from 8:00 AM to
+                            4:00 PM. We&rsquo;re closed on Sundays.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-heading">
+                        <button type="button" class="accordion-trigger" id="faq-2-button" aria-expanded="false"
+                            aria-controls="faq-2">
+                            Where can I find you?
+                            <span class="accordion-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="accordion-panel" id="faq-2" role="region" aria-labelledby="faq-2-button">
+                        <p>We&rsquo;re at 123 Example Street in Pretoria East. Use the map above to get directions or
+                            to see how far away you are.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-heading">
+                        <button type="button" class="accordion-trigger" id="faq-3-button" aria-expanded="false"
+                            aria-controls="faq-3">
+                            Can I have my drink hot or iced?
+                            <span class="accordion-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="accordion-panel" id="faq-3" role="region" aria-labelledby="faq-3-button">
+                        <p>Our matcha drinks come hot or iced. You can choose your temperature on the
+                            <a href="services.html">menu page</a>.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-heading">
+                        <button type="button" class="accordion-trigger" id="faq-4-button" aria-expanded="false"
+                            aria-controls="faq-4">
+                            Does matcha have caffeine?
+                            <span class="accordion-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="accordion-panel" id="faq-4" role="region" aria-labelledby="faq-4-button">
+                        <p>Yes. Matcha is made from whole ground tea leaves, so it does contain caffeine, usually less
+                            than a cup of coffee. Ask our baristas if you&rsquo;d like help choosing.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-heading">
+                        <button type="button" class="accordion-trigger" id="faq-5-button" aria-expanded="false"
+                            aria-controls="faq-5">
+                            Can we collaborate or host something together?
+                            <span class="accordion-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="accordion-panel" id="faq-5" role="region" aria-labelledby="faq-5-button">
+                        <p>We&rsquo;d love to hear your ideas. Send us a message on the
+                            <a href="enquiry.html">enquiry page</a> and tell us what you have in mind.</p>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
     </main>
 
-    <!--FOOTER (same on every page)-->
+    <!-- FOOTER (same on every page) -->
     <footer class="site-footer">
 
-        <div class="footer column">
-            <h3>About us</h3>
+        <div class="footer-column">
+            <h3>About Us</h3>
             <ul>
                 <li><a href="about.html">Our Story</a></li>
-
             </ul>
         </div>
-        <div class="footer column">
+
+        <div class="footer-column">
             <h3>Customer Service</h3>
             <ul>
-                <li><a href="menu.html">Contact Us</a></li>
-                <li><a href="#">Gift Cards</a></li> <!-- Placeholder link to a page or section 1 -->
-
-                <li><a href="gallery.html">Events</a></li>
+                <li><a href="services.html">Menu</a></li>
+                <li><a href="#" data-coming-soon>Gift Cards</a></li> <!-- opens a "coming soon" modal (js/script.js) -->
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </div>
-        <div class="footer column">
-            <h3>contact us</h3>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
             <ul>
-                <li><a href="contact.html#loactions">Locations</a></li>
-                <li><a href="#">Rewards Program</a></li>
+                <li><a href="contact.html#location">Locations</a></li>
+                <li><a href="#" data-coming-soon>Rewards</a></li>
                 <li><a href="contact.html#faqs">FAQs</a></li>
-                <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your instagram/Fcaebook URL-->
-
-                <li><a href="mailto:hello@wabisabicoffee.com">Email us for inquiries</a></li>
+                <li><a href="#" data-coming-soon>Social Media</a></li> <!-- swap in your Instagram/Facebook URL when ready -->
+                <li><a href="enquiry.html">Email us for inquiries</a></li>
             </ul>
         </div>
+
+        <p class="footer-note">&copy; 2026 Wabi Sabi Coffee Shop</p>
+
     </footer>
 
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/script.js"></script>
+    <script src="js/map.js"></script>
 </body>
 
 </html>

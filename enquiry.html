@@ -3,33 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" <title>My First Webopage</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Enquiry | Wabi Sabi Coffee Shop</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-    <script>
-        document.getElementById("demo").innerHTML = "My First Javascript";
-    </script>
 
-    <!--HEADER + NAVIGATION (same on every page)-->
+    <!-- HEADER + NAVIGATION (same on every page) -->
     <header class="site-header">
         <a href="index.html" class="logo">Wabi Sabi</a>
 
         <nav>
             <ul class="nav-links">
-                <li>,<a href="index.html">Home</a></li>
-                <li>,<a href="services.html">Menu</a></li>
-                <li>,<a href="about.html">About</a></li>
-                <li>,<a href="enquiry.html" aria-current="page">Enquiry</a></li>
-                <li>,<a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="enquiry.html" aria-current="page">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!--MAIN CONTENT-->
+    <!-- MAIN CONTENT -->
     <main>
 
         <h1>Enquiry Form</h1>
@@ -37,10 +34,12 @@
         <p class="enquiry-intro">Whether you have a question about our coffee or matcha, a collaboration idea or you
             just want to say hi, we'd love to hear from you
         </p>
-        <section class="enquiry-form section">
+
+        <section class="enquiry-form">
             <h2>Send Us a Message</h2>
 
-            <!--actz="#"is a placeholder for the form action attribute-->
+            <!-- action="#" is a placeholder: nothing is sent anywhere yet. js/script.js checks the fields
+                 and shows a confirmation. See the TODO in js/script.js about connecting a real form service. -->
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -51,18 +50,19 @@
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="phone">phone number (optional)</label>
+                    <label for="phone">Phone number (optional):</label>
                     <input type="tel" id="phone" name="phone">
                 </div>
 
                 <div class="form-group">
-                    <label for="reason">Reason for contacting us</label>
+                    <label for="reason">Reason for contacting us:</label>
                     <select id="reason" name="reason" required>
                         <option value="">Please choose one</option>
-                        <option value="coffe-question">Question about our coffee</option>
+                        <option value="coffee-question">Question about our coffee</option>
                         <option value="collaboration">Collaboration</option>
-                        <option value="say hi">Say Hi</option>
+                        <option value="say-hi">Say Hi</option>
                         <option value="other">Something else</option>
                     </select>
                 </div>
@@ -77,38 +77,43 @@
         </section>
     </main>
 
-    <!--Footer(samw on every page )-->
+    <!-- FOOTER (same on every page) -->
     <footer class="site-footer">
 
         <div class="footer-column">
             <h3>About Us</h3>
             <ul>
                 <li><a href="about.html">Our Story</a></li>
-
             </ul>
         </div>
 
         <div class="footer-column">
             <h3>Customer Service</h3>
             <ul>
-                <li><a href="products.html">Enquiry</a></li>
-                <li><a href="#" Gift Cards</a></a></li><!--placeholder: link to a page or section 1-->
-                <li><a href="#">Events</a></li> <!--placeholder: link to a page or section 1-->
+                <li><a href="services.html">Menu</a></li>
+                <li><a href="#" data-coming-soon>Gift Cards</a></li> <!-- opens a "coming soon" modal (js/script.js) -->
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
             <h3>Contact Us</h3>
             <ul>
-                <li><a href="contact.html#locations">Locations</a></li>
-                <li><a href="#">Rewwards</a></li>
+                <li><a href="contact.html#location">Locations</a></li>
+                <li><a href="#" data-coming-soon>Rewards</a></li>
                 <li><a href="contact.html#faqs">FAQs</a></li>
-                <li><a href="#" Social Media>Enquiry</a></li><!--placeholder:swap in your instagram/facebook URL-->
+                <li><a href="#" data-coming-soon>Social Media</a></li> <!-- swap in your Instagram/Facebook URL when ready -->
                 <li><a href="enquiry.html">Email us for inquiries</a></li>
             </ul>
         </div>
 
+        <p class="footer-note">&copy; 2026 Wabi Sabi Coffee Shop</p>
+
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

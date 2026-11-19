@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>My First Webpage</title>
+    <title>Menu | Wabi Sabi Coffee Shop</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,8 +17,9 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="services.html" aria-current="page">Menu</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="products.html" aria-current="page">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -32,137 +33,41 @@
         <p class="menu-intro">
             A small, simple menu of matcha and coffee, made with care.
         </p>
-        <!-- MENU TABS -->
-        <div class="menu-tabs" role="tablist" aria-label="Menu categories">
 
-            <button class="menu-tab active" id="matcha-tab" type="button" role="tab" aria-selected="true"
-                aria-controls="matcha" data-target="matcha">
-                Matcha
-            </button>
+        <!-- SEARCH + SORT (js/menu.js) -->
+        <form class="menu-toolbar" role="search" aria-label="Search and sort the menu">
+            <div class="form-group">
+                <label for="menu-search">Search the menu</label>
+                <input type="search" id="menu-search" placeholder="Try &ldquo;vanilla&rdquo; or &ldquo;milk&rdquo;"
+                    autocomplete="off">
+            </div>
 
-            <button class="menu-tab" id="coffee-tab" type="button" role="tab" aria-selected="false"
-                aria-controls="coffee" data-target="coffee">
-                Coffee
-            </button>
+            <div class="form-group">
+                <label for="menu-sort">Sort by</label>
+                <select id="menu-sort">
+                    <option value="default">Menu order</option>
+                    <option value="name-asc">Name: A to Z</option>
+                    <option value="name-desc">Name: Z to A</option>
+                    <option value="price-asc">Price: low to high</option>
+                    <option value="price-desc">Price: high to low</option>
+                </select>
+            </div>
+        </form>
 
+        <!-- CATEGORY TABS: the buttons are created by js/menu.js from data/menu.json -->
+        <div class="menu-tabs" role="tablist" aria-label="Menu categories"></div>
+
+        <p class="menu-count" id="menu-count" role="status"></p>
+
+        <!-- MENU ITEMS: also created by js/menu.js -->
+        <div class="menu-results" id="menu-results" role="tabpanel" aria-busy="true">
+            <p class="menu-loading">Loading the menu&hellip;</p>
         </div>
 
-        <!-- MATCHA MENU -->
-        <section class="menu-section active" id="matcha" role="tabpanel" aria-labelledby="matcha-tab">
-            <h2>Matcha</h2>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Strawberry Matcha Iced Latte</h3>
-                    <span class="price">R50</span>
-                </div>
-                <p class="menu-item-description">
-                    Matcha layered over strawberry and milk, served over ice.
-                </p>
-                <div class="serving-choice">
-                    <p class="serving-label">choose your temperature:</p>
-                    <div class="serving-buttons" role="group" aria-label="Vanilla Matcha Latte temprature">
-                        <button>
-                            type="button"
-                            class="serving-button selected"
-                            data-serving="hot"
-                            aria-pressed="true">
-                            Hot
-                        </button>
-
-                        <button> type="button"
-                            class="serving-button"
-                            data-serving="iced"
-                            aria-pressed="false">
-                            Iced
-
-                        </button>
-                    </div>
-                    <p class="serving-feedback" aria-live="polite">
-                        selected: Hot
-                    </p>
-                </div>
-
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Vanilla Matcha Latte</h3>
-                    <span class="price">R50</span>
-                </div>
-                <p class="menu-item-description">
-                    Smooth matcha with a touch of vanilla and milk.
-                </p>
-                <p class="menu-item-serving">Hot or iced</p>
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Hibiscus Matcha</h3>
-                    <span class="price">R50</span>
-                </div>
-                <p class="menu-item-description">
-                    Earthy matcha paired with bright, floral hibiscus.
-                </p>
-                <p class="menu-item-serving">Hot or iced</p>
-            </article>
-        </section>
-
-        <!-- COFFEE MENU -->
-        <section class="menu-section" id="coffee">
-            role="tabpanel"
-            aria-labelledby="coffee-tab">
-            <hidden></hidden>
-            <h2>Coffee</h2>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Espresso</h3>
-                    <span class="price">R26</span>
-                </div>
-                <p class="menu-item-description">A short, strong shot of coffee.</p>
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Americano</h3>
-                    <span class="price">R36</span>
-                </div>
-                <p class="menu-item-description">Espresso topped with hot water.</p>
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Cappuccino</h3>
-                    <span class="price">R50</span>
-                </div>
-                <p class="menu-item-description">Espresso with steamed milk and a thick layer of foam.</p>
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Flat White</h3>
-                    <span class="price">R36</span>
-                </div>
-                <p class="menu-item-description">Espresso with velvety, lightly textured milk.</p>
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Latte</h3>
-                    <span class="price">R56</span>
-                </div>
-                <p class="menu-item-description">Espresso with plenty of steamed milk.</p>
-            </article>
-
-            <article class="menu-item">
-                <div class="menu-item-header">
-                    <h3>Mocha</h3>
-                    <span class="price">R65</span>
-                </div>
-                <p class="menu-item-description">Espresso, chocolate and steamed milk.</p>
-            </article>
-        </section>
+        <noscript>
+            <p>Our menu needs JavaScript to load. Please turn it on, or <a href="contact.html">get in touch</a> and
+                we&rsquo;ll tell you what we&rsquo;re serving.</p>
+        </noscript>
 
     </main>
 
@@ -179,25 +84,31 @@
         <div class="footer-column">
             <h3>Customer Service</h3>
             <ul>
-                <li><a href="products.html">Menu</a></li>
-                <li><a href="#">Gift Cards</a></li> <!-- placeholder: link to a page or section later -->
-                <li><a href="#">Events</a></li> <!-- placeholder: no events page in the 5-page structure -->
+                <li><a href="services.html">Menu</a></li>
+                <li><a href="#" data-coming-soon>Gift Cards</a></li> <!-- opens a "coming soon" modal (js/script.js) -->
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
             <h3>Contact Us</h3>
             <ul>
-                <li><a href="contact.html#locations">Locations</a></li>
-                <li><a href="#">Rewards</a></li> <!-- placeholder -->
+                <li><a href="contact.html#location">Locations</a></li>
+                <li><a href="#" data-coming-soon>Rewards</a></li>
                 <li><a href="contact.html#faqs">FAQs</a></li>
-                <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your Instagram/Facebook URL -->
+                <li><a href="#" data-coming-soon>Social Media</a></li> <!-- swap in your Instagram/Facebook URL when ready -->
                 <li><a href="enquiry.html">Email us for inquiries</a></li>
             </ul>
         </div>
 
+        <p class="footer-note">&copy; 2026 Wabi Sabi Coffee Shop</p>
+
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 
 </html>

@@ -23,6 +23,7 @@
   --moss-green:  #889063;   /* thin accents: dots, squiggles, focus */
   --tan:         #CFBB99;   /* hairlines, footer headings           */
   --bone-tan:    #E5D7C4;   /* the sand: page background            */
+  --bone:        var(--bone-tan);   /* short name used by the rules below */
 
   --font-heading: "Lazy Arie", Georgia, serif;
   --font-body: "Jost", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -171,19 +172,7 @@ main > form {
 
 
 /* ---------- 6. HEADER + NAVIGATION ---------- */
-.hero{
-    min-height:500px;
-    background-image: url("../matcha bubbles.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--bone);
-}
 .site-header {
   position: sticky;
   top: 0;
@@ -637,34 +626,761 @@ main:has(> .hero:last-child) + .site-footer::before {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
+
+/* ============================================================
+   15. INTERACTIVE ELEMENTS + ANIMATION
+   Everything below belongs to the JavaScript features in
+   js/script.js and js/map.js.
+   ============================================================ */
+
+
+/* ---------- 15a. Small helpers ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keeps anchor targets (#faqs, #location) from hiding under the sticky header */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* JS adds this to <body> while a modal or lightbox is open */
+body.no-scroll {
+  overflow: hidden;
+}
+
+.page-intro {
+  margin-bottom: 2rem;
+  font-size: 1.15rem;
+}
+
+
+/* ---------- 15b. Keyframes ---------- */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-zoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(53, 64, 36, 0.45); }
+  70%  { box-shadow: 0 0 0 0.6rem rgba(53, 64, 36, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(53, 64, 36, 0); }
+}
+
+
+/* ---------- 15c. Page-load + hover animation (CSS only) ---------- */
+
+.hero img {
+  animation: hero-zoom 2.4s ease-out both;
+}
+
+.hero-text {
+  animation: fade-up 0.9s 0.25s ease both;
+}
+
+.button,
+button[type="submit"] {
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover,
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(53, 64, 36, 0.25);
+}
+
+.button:active,
+button[type="submit"]:active {
+  transform: none;
+}
+
+.button-outline {
+  color: var(--kombu-green);
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px var(--kombu-green);
+}
+
+.button-outline:hover {
+  color: var(--bone);
+  background-color: var(--kombu-green);
+}
+
+.menu-item {
+  transition: transform 0.25s ease;
+}
+
+.menu-item:hover {
+  transform: translateX(4px);
+}
+
+
+/* ---------- 15d. Scroll effects (class toggled by JS) ---------- */
+
+.site-header {
+  transition: padding 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+  box-shadow: 0 4px 18px rgba(76, 61, 25, 0.12);
+}
+
+/* JS adds .reveal to elements, then .is-visible when they scroll into view */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  color: var(--bone);
+  background-color: var(--kombu-green);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(32, 26, 12, 0.25);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.back-to-top:hover {
+  background-color: var(--cafe-noir);
+}
+
+
+/* ---------- 15e. Menu tabs ---------- */
+
+.menu-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--tan);
+}
+
+.menu-tab {
+  padding: 0.55rem 1.6rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--cafe-noir);
+  background-color: transparent;
+  border: 1.5px solid var(--moss-green);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.menu-tab:hover {
+  background-color: rgba(136, 144, 99, 0.2);
+}
+
+.menu-tab.active,
+.menu-tab[aria-selected="true"] {
+  color: var(--bone);
+  background-color: var(--kombu-green);
+  border-color: var(--kombu-green);
+}
+
+
+/* ---------- 15f. Hot / Iced buttons (built by JS) ---------- */
+
+.serving-choice {
+  margin-top: 0.9rem;
+}
+
+.serving-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+}
+
+.serving-buttons {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.serving-button {
+  padding: 0.2rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--cafe-noir);
+  background-color: transparent;
+  border: 1px solid var(--moss-green);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.serving-button:hover {
+  background-color: rgba(136, 144, 99, 0.2);
+}
+
+.serving-button:active {
+  transform: scale(0.95);
+}
+
+.serving-button.selected {
+  color: var(--bone);
+  background-color: var(--kombu-green);
+  border-color: var(--kombu-green);
+}
+
+.serving-feedback {
+  min-height: 1.5em;
+  margin: 0.45rem 0 0;
+  font-size: 0.9rem;
+}
+
+
+/* ---------- 15g. Accordion (FAQs) ---------- */
+
+.accordion {
+  border-top: 1px solid var(--tan);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--tan);
+}
+
+.accordion-heading {
+  margin: 0;
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+  line-height: 1.3;
+  text-align: left;
+  color: var(--cafe-noir);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.accordion-trigger:hover {
+  color: var(--kombu-green);
+}
+
+/* The + that turns into a − (drawn with two bars, no image file needed) */
+.accordion-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  margin-top: -1px;
+  background-color: var(--moss-green);
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+.accordion-icon::after {
+  transform: rotate(90deg);
+}
+
+.accordion-item.is-open .accordion-icon::after {
+  transform: rotate(0deg);
+}
+
+.accordion-panel {
+  padding: 0 2.2rem 1.2rem 0;
+}
+
+.accordion-panel p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------- 15h. Modal (built by JS) ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background-color: rgba(32, 26, 12, 0.6);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+}
+
+.modal {
+  position: relative;
+  width: min(26rem, 100%);
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  color: var(--cafe-noir);
+  background-color: var(--bone);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px rgba(32, 26, 12, 0.35);
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-open .modal {
+  transform: none;
+}
+
+.modal h2 {
+  margin-bottom: 0.7rem;
+}
+
+.modal p {
+  margin-bottom: 1.5rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.9rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--cafe-noir);
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: rgba(76, 61, 25, 0.1);
+}
+
+
+/* ---------- 15i. Open-now badge (built by JS) ---------- */
+
+.open-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.75rem;
+  padding: 0.25rem 0.95rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid var(--moss-green);
+  border-radius: 999px;
+}
+
+.open-badge-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #8a2f1d;
+  border-radius: 50%;
+}
+
+.open-badge.is-open .open-badge-dot {
+  background-color: var(--kombu-green);
+  animation: pulse 2s ease-out infinite;
+}
+
+
+/* ---------- 15j. Map (Leaflet) ---------- */
+
+.map {
+  position: relative;
+  isolation: isolate;               /* keeps Leaflet's layers under the sticky header */
+  height: 26rem;
+  background-color: var(--tan);
+  border-radius: 1rem;
+  box-shadow: 0 0 0 6px rgba(207, 187, 153, 0.6);
+}
+
+.map-fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.leaflet-container {
+  font-family: var(--font-body);
+}
+
+.map-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.map-status {
+  flex-basis: 100%;
+  min-height: 1.5em;
+  margin: 0;
+}
+
+
+/* ---------- 15k. Gallery + lightbox ---------- */
+
+/* Wider than the reading column so the photos have room */
+main > .gallery {
+  width: min(100% - (2 * var(--gutter)), 68rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.5rem 1.25rem;
+}
+
+.gallery-item {
+  margin: 0;
+}
+
+.gallery-item a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background-color: var(--tan);
+  border-radius: 1rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item a:hover img,
+.gallery-item a:focus-visible img {
+  transform: scale(1.06);
+}
+
+.gallery-item a::after {
+  content: "View larger";
+  position: absolute;
+  left: 0.8rem;
+  bottom: 0.8rem;
+  padding: 0.2rem 0.85rem;
+  font-size: 0.85rem;
+  color: var(--bone);
+  background-color: rgba(53, 64, 36, 0.88);
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item a:hover::after,
+.gallery-item a:focus-visible::after {
+  opacity: 1;
+  transform: none;
+}
+
+.gallery-item figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 5rem;
+  background-color: rgba(32, 26, 12, 0.94);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+}
+
+.lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(100%, 1200px);
+  max-height: calc(100vh - 11rem);
+  object-fit: contain;
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox-img.is-loading {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.lightbox-caption {
+  text-align: center;
+  color: var(--bone);
+}
+
+.lightbox-counter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.1rem;
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--tan);
+}
+
+.lightbox-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0 0 0.2rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--bone);
+  background-color: rgba(229, 215, 196, 0.12);
+  border: 1px solid rgba(229, 215, 196, 0.35);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lightbox-btn:hover {
+  background-color: rgba(229, 215, 196, 0.28);
+}
+
+.lightbox-btn:focus-visible {
+  outline-color: var(--tan);
+}
+
+.lightbox-close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  margin-top: -1.5rem;
+}
+
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+
+
+/* ---------- 15l. Enquiry form feedback (built by JS) ---------- */
+
+.field-error {
+  margin: 0.4rem 0 0;
+  font-size: 0.92rem;
+  color: #8a2f1d;
+  animation: fade-up 0.25s ease both;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-bottom-color: #8a2f1d;
+}
+
+.char-count {
+  margin: 0.3rem 0 0;
+  font-size: 0.85rem;
+  text-align: right;
+  opacity: 0.75;
+}
+
+.char-count.near-limit {
+  color: #8a2f1d;
+  opacity: 1;
+}
+
+.form-success {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--moss-green);
+  border-radius: 1rem;
+}
+
+
+/* ---------- 15n. Dynamic menu: search, sort, results ---------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+main > .menu-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 13rem);
+  gap: 0 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.menu-tab-count {
+  margin-left: 0.45rem;
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+.menu-count {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.menu-loading {
+  padding: 2rem 0;
+}
+
+/* backwards (not both) so the hover slide on .menu-item still works afterwards */
+.menu-list.is-entering .menu-item {
+  animation: fade-up 0.4s ease backwards;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+.menu-item-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 0 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border: 1px solid var(--moss-green);
+  border-radius: 999px;
+}
+
+.menu-item-tag + .serving-choice {
+  margin-top: 0.75rem;
+}
+
+.menu-empty {
+  padding: 1.5rem 0 2rem;
+}
+
+mark {
+  padding: 0 0.1em;
+  color: inherit;
+  background-color: rgba(136, 144, 99, 0.35);
+  border-radius: 0.2em;
+}
+
+
+/* ---------- 15o. Footer note ---------- */
+
+.footer-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--tan);
+  border-top: 1px solid rgba(207, 187, 153, 0.3);
+}
+
+
+/* ---------- 15m. Small screens ---------- */
+
+@media (max-width: 640px) {
+
+  .lightbox {
+    padding: 3.5rem 1rem 5.5rem;
+  }
+
+  /* Arrows move to the bottom corners so they don't cover the photo */
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto;
+    bottom: 0.9rem;
+    margin-top: 0;
+  }
+
+  .map {
+    height: 20rem;
+  }
+
+  main > .menu-toolbar {
+    grid-template-columns: 1fr;
   }
 }
 
-<div class="menu-tabs" role="tablist" aria-label="Menu categories">
 
-    <button
-        class="menu-tab active"
-        id="matcha-tab"
-        type="button"
-        role="tab"
-        aria-selected="true"
-        aria-controls="matcha"
-        data-target="matcha">
-        Matcha
-    </button>
+/* ---------- 16. REDUCED MOTION ---------- */
+/* People who ask their device for less motion get none of the above. */
 
-    <button
-        class="menu-tab"
-        id="coffee-tab"
-        type="button"
-        role="tab"
-        aria-selected="false"
-        aria-controls="coffee"
-        data-target="coffee">
-        Coffee
-    </button>
+@media (prefers-reduced-motion: reduce) {
 
-</div>
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

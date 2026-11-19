@@ -1,0 +1,74 @@
+{
+  "categories": [
+    { "id": "matcha", "label": "Matcha" },
+    { "id": "coffee", "label": "Coffee" }
+  ],
+  "items": [
+    {
+      "id": "strawberry-matcha-iced-latte",
+      "name": "Strawberry Matcha Iced Latte",
+      "category": "matcha",
+      "price": 50,
+      "description": "Matcha layered over strawberry and milk, served over ice.",
+      "temperature": ["Iced", "Hot"]
+    },
+    {
+      "id": "vanilla-matcha-latte",
+      "name": "Vanilla Matcha Latte",
+      "category": "matcha",
+      "price": 50,
+      "description": "Smooth matcha with a touch of vanilla and milk.",
+      "temperature": ["Hot", "Iced"]
+    },
+    {
+      "id": "hibiscus-matcha",
+      "name": "Hibiscus Matcha",
+      "category": "matcha",
+      "price": 50,
+      "description": "Earthy matcha paired with bright, floral hibiscus.",
+      "temperature": ["Hot", "Iced"]
+    },
+    {
+      "id": "espresso",
+      "name": "Espresso",
+      "category": "coffee",
+      "price": 26,
+      "description": "A short, strong shot of coffee."
+    },
+    {
+      "id": "americano",
+      "name": "Americano",
+      "category": "coffee",
+      "price": 36,
+      "description": "Espresso topped with hot water."
+    },
+    {
+      "id": "cappuccino",
+      "name": "Cappuccino",
+      "category": "coffee",
+      "price": 50,
+      "description": "Espresso with steamed milk and a thick layer of foam."
+    },
+    {
+      "id": "flat-white",
+      "name": "Flat White",
+      "category": "coffee",
+      "price": 36,
+      "description": "Espresso with velvety, lightly textured milk."
+    },
+    {
+      "id": "latte",
+      "name": "Latte",
+      "category": "coffee",
+      "price": 56,
+      "description": "Espresso with plenty of steamed milk."
+    },
+    {
+      "id": "mocha",
+      "name": "Mocha",
+      "category": "coffee",
+      "price": 65,
+      "description": "Espresso, chocolate and steamed milk."
+    }
+  ]
+}

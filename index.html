@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>My First Webpage</title>
+    <title>Wabi Sabi Coffee Shop | Home</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -18,8 +17,9 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="services.html">Menu</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="products.html">Products</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -29,10 +29,8 @@
     <!-- MAIN CONTENT -->
     <main>
 
-        <img src="images/matcha bubbles.jpg" alt="A cup of matcha bubble tea on a wooden table at Wabi Sabi">
         <section class="hero">
-            <!-- Replace the file name in src with your own image -->
-            <img src="images/hero.jpg" alt="A cup of matcha latte on a wooden table at Wabi Sabi">
+            <img src="images/hero.jpg" alt="Close-up of bright green matcha foam">
 
             <div class="hero-text">
                 <h1>Welcome to Wabi Sabi</h1>
@@ -40,7 +38,7 @@
                     A quiet coffee and matcha shop where you can pause, breathe and
                     be present. Imperfect, unhurried and made for you.
                 </p>
-                <a href="products.html" class="button">View Our Menu</a>
+                <a href="services.html" class="button">View Our Menu</a>
             </div>
         </section>
 
@@ -59,25 +57,30 @@
         <div class="footer-column">
             <h3>Customer Service</h3>
             <ul>
-                <li><a href="products.html">Menu</a></li>
-                <li><a href="#">Gift Cards</a></li> <!-- placeholder: link to a page or section later -->
-                <li><a href="#">Events</a></li> <!-- placeholder: no events page in the 5-page structure -->
+                <li><a href="services.html">Menu</a></li>
+                <li><a href="#" data-coming-soon>Gift Cards</a></li> <!-- opens a "coming soon" modal (js/script.js) -->
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
             <h3>Contact Us</h3>
             <ul>
-                <li><a href="contact.html#locations">Locations</a></li>
-                <li><a href="#">Rewards</a></li> <!-- placeholder -->
+                <li><a href="contact.html#location">Locations</a></li>
+                <li><a href="#" data-coming-soon>Rewards</a></li>
                 <li><a href="contact.html#faqs">FAQs</a></li>
-                <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your Instagram/Facebook URL -->
+                <li><a href="#" data-coming-soon>Social Media</a></li> <!-- swap in your Instagram/Facebook URL when ready -->
                 <li><a href="enquiry.html">Email us for inquiries</a></li>
             </ul>
         </div>
 
+        <p class="footer-note">&copy; 2026 Wabi Sabi Coffee Shop</p>
+
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
