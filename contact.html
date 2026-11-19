@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Contact | Wabi Sabi Coffee Shop</title>
+    <meta name="description"
+        content="Get in touch with Wabi Sabi Coffee Shop in Pretoria East. Find our contact information, opening hours, and an interactive map to locate us.">  
+        
     <!-- Leaflet map styling -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -21,11 +24,11 @@
 
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Menu</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="enquiry.html">Enquiry</a></li>
-                <li><a href="contact.html" aria-current="page">Contact</a></li>
+                <li>,<a href="index.html">Home</a></li>
+                <li>,<a href="services.html">Menu</a></li>
+                <li>,<a href="about.html">About</a></li>
+                <li>,<a href="enquiry.html">Enquiry</a></li>
+                <li>,<a href="contact.html" aria-current="page">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -35,47 +38,6 @@
     <main>
 
         <h1>Contact Us</h1>
-        <p class="enquiry-intro">Whether you have a question about our coffee or matcha, a collaboration idea or you
-            just want to say hi, we'd love to hear from you
-        </p>
-        <section class="enquiry-form section">
-            <h2>Send Us a Message</h2>
-
-            <!--actz="#"is a placeholder for the form action attribute-->
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">phone number (optional)</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-
-                <div class="form-group">
-                    <label for="reason">Reason for contacting us</label>
-                    <select id="reason" name="reason" required>
-                        <option value="">Please choose one</option>
-                        <option value="coffe-question">Question about our coffee</option>
-                        <option value="collaboration">Collaboration</option>
-                        <option value="say hi">Say Hi</option>
-                        <option value="other">Something else</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <button type="submit">Submit</button>
-            </form>
-        </section>
 
         <!--Shop contact information-->
         <section class="contact-info">
@@ -153,48 +115,6 @@
 
         </section>
 
-        <section class="faq-section" id="faqs">
-            <h2>FAQs</h2>
-            <p>Click a question to open the answer.</p>
-
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-trigger" type="button" aria-expanded="false">
-                        Do you have oat milk?
-                    </button>
-                    <div class="accordion-panel">
-                        <p>Yes. Oat milk is available for any latte.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-trigger" type="button" aria-expanded="false">
-                        Are you open on Sundays?
-                    </button>
-                    <div class="accordion-panel">
-                        <p>The shop is closed on Sundays. Monday to Friday we open at 7:00 AM.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-trigger" type="button" aria-expanded="false">
-                        Can I sit and study?
-                    </button>
-                    <div class="accordion-panel">
-                        <p>Yes. The tables by the window are quiet and meant for a slow hour.</p>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-trigger" type="button" aria-expanded="false">
-                        Where is the shop?
-                    </button>
-                    <div class="accordion-panel">
-                        <p>Hazeldean Square, on the corner of Graham Road and Silver Lakes Drive in Pretoria East.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </main>
 
@@ -223,6 +143,14 @@
                 <li><a href="contact.html#location">Locations</a></li>
                 <li><a href="#">Rewards Program</a></li>
                 <li><a href="contact.html#faqs">FAQs</a></li>
+                <div class="accordion">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        Do you have oat milk?
+                    </button>
+                    <div class="accordion-panel" hidden>
+                        <p>Yes. Oat milk is available for any latte.</p>
+                    </div>
+                </div>
                 <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your instagram/Fcaebook URL-->
 
                 <li><a href="mailto:hello@wabisabicoffee.com">Email us for inquiries</a></li>

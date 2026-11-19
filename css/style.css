@@ -1074,3 +1074,352 @@ main.page-enter {
     }
 
 }
+/*  COMPACT FOOTER  */
+
+.site-footer {
+    gap: 1.25rem;
+    margin-top: 45px;
+    padding: 1.8rem var(--gutter) 2rem;
+}
+
+.site-footer h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.45rem;
+}
+
+.site-footer li {
+    margin-bottom: 0.2rem;
+}
+
+.site-footer a {
+    font-size: 0.9rem;
+}
+
+/* Mobile footer */
+
+@media (max-width: 768px) {
+
+    .site-footer {
+        gap: 1rem;
+        padding: 1.5rem var(--gutter) 1.75rem;
+    }
+
+}
+/* =================================
+   WABI SABI IMAGE GALLERY
+================================= */
+
+/* Gallery section */
+
+.gallery-section {
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+}
+
+.gallery-intro {
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+    max-width: 40rem;
+}
+
+
+/* Gallery grid */
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 1.5rem;
+
+}
+
+
+/* Individual gallery images */
+
+.gallery-item {
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 0.8rem;
+
+    background: transparent;
+
+    text-align: left;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+}
+
+
+/* Images */
+
+.gallery-item img {
+
+    display: block;
+
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius: 0.8rem;
+
+    transition: transform 0.4s ease;
+
+}
+
+
+/* Hover animation */
+
+.gallery-item:hover img {
+
+    transform: scale(1.04);
+
+}
+
+
+/* Image captions */
+
+.gallery-caption {
+
+    padding: 0.8rem 0;
+
+    color: var(--cafe-noir);
+
+    font-size: 0.95rem;
+
+}
+
+
+/* Keyboard accessibility */
+
+.gallery-item:focus-visible {
+
+    outline: 2px solid var(--kombu-green);
+    outline-offset: 4px;
+
+}
+
+
+/* =================================
+   LIGHTBOX
+================================= */
+
+.lightbox {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    padding: 3rem 1rem;
+
+    background: rgba(30, 35, 27, 0.92);
+
+}
+
+
+/* Show lightbox */
+
+.lightbox.is-open {
+
+    display: flex;
+
+}
+
+
+/* Enlarged image */
+
+.lightbox-image {
+
+    display: block;
+
+    max-width: 90vw;
+
+    max-height: 78vh;
+
+    object-fit: contain;
+
+    border-radius: 0.6rem;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/* Image caption inside lightbox */
+
+.lightbox-caption {
+
+    margin-top: 1rem;
+
+    color: var(--bone);
+
+    font-size: 1rem;
+
+    text-align: center;
+
+}
+
+
+/* Close button */
+
+.lightbox-close {
+
+    position: absolute;
+
+    top: 1.2rem;
+    right: 1.5rem;
+
+    width: 45px;
+    height: 45px;
+
+    padding: 0;
+
+    border: 1px solid var(--tan);
+    border-radius: 50%;
+
+    background: var(--bone);
+
+    color: var(--cafe-noir);
+
+    font-size: 1.8rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+}
+
+.lightbox-close:hover {
+
+    background: var(--tan);
+
+}
+
+
+/* Prevent scrolling behind the lightbox */
+
+body.lightbox-open {
+
+    overflow: hidden;
+
+}
+
+
+/* Mobile gallery */
+
+@media (max-width: 600px) {
+
+    .gallery-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 1rem;
+
+    }
+
+    .gallery-item img {
+
+        height: 190px;
+
+    }
+
+    .lightbox-image {
+
+        max-width: 95vw;
+
+        max-height: 75vh;
+
+    }
+
+}
+/* MENU SEARCH AND SORT */
+
+.menu-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.menu-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-field input,
+.menu-field select {
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--tan);
+    border-radius: 0.5rem;
+    background-color: var(--bone);
+    color: var(--cafe-noir);
+    font-family: var(--font-body);
+}
+
+.menu-field input:focus,
+.menu-field select:focus {
+    outline: 2px solid var(--moss-green);
+}
+
+.menu-item[hidden] {
+    display: none;
+}
+/* ADDITIONAL MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+
+    /* Keep page content within the screen */
+    main {
+        width: 100%;
+    }
+
+    /* Make navigation fit smaller screens */
+    .nav-links {
+        justify-content: center;
+        gap: 0.5rem 0.9rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    /* Make menu items easier to read */
+    .menu-item-header {
+        flex-wrap: wrap;
+    }
+
+    /* Make forms fit mobile screens */
+    input,
+    select,
+    textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Reduce excessive hero spacing */
+    .hero-text {
+        width: 90%;
+        margin: 2rem auto 4rem;
+    }
+
+}

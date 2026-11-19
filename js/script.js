@@ -343,21 +343,127 @@ function setupGallery() {
 const products = [
   { name: "Vanilla Matcha ", category: "Matcha ", price: 50 },
   { name: "Hibiscus Matcha", category: "Matcha ", price: 40 },
-  { name: "Regular Matcha Latte", category: "Matcha ", price: 30 }
+  { name: "matcha", category: "Electronics", price: 85 }
 ];
 
 // Filter by category and search text (case-insensitive)
-const searchText = "matcha";
-const selectedCategory = "Matcha ";
+const searchText = "mouse";
+const selectedCategory = "Electronics";
 
 const filtered = products.filter(item => {
   const matchesCategory = selectedCategory === "All" || item.category === selectedCategory;
   const matchesSearch = item.name.toLowerCase().includes(searchText.toLowerCase());
   return matchesCategory && matchesSearch;
 });
-// Lowest price to highest price
-const sortedByPrice = [...filtered].sort((a, b) => a.price - b.price);
 
-// Alphabetical A to Z
-const sortedByName = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+// // MENU SEARCH AND SORT// 
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Find the search and sorting elements
+    const searchInput = document.getElementById("menu-search");
+
+    const sortSelect = document.getElementById("menu-sort");
+
+    // Find all menu sections
+    const sections = document.querySelectorAll(".menu-section");
+
+    // Check whether these elements exist
+    if (!searchInput || !sortSelect || sections.length === 0) {
+        return;
+    }
+
+    // Store the original menu items
+    const menuGroups = Array.from(sections).map(function (section) {
+
+        return {
+            section: section,
+            items: Array.from(section.querySelectorAll(".menu-item"))
+        };
+
+    });
+
+
+    // Function to search and sort the menu
+    function updateMenu() {
+
+        const query = searchInput.value.toLowerCase().trim();
+
+        const sortBy = sortSelect.value;
+
+
+        menuGroups.forEach(function (group) {
+
+            // Filter menu items
+            const matchingItems = group.items.filter(function (item) {
+
+                return item.textContent.toLowerCase().includes(query);
+
+            });
+
+
+            // Sort menu items
+            matchingItems.sort(function (a, b) {
+
+                const nameA = a.querySelector("h3").textContent.trim();
+
+                const nameB = b.querySelector("h3").textContent.trim();
+
+                const priceA = Number(
+                    a.querySelector(".price").textContent.replace(/[^\d.]/g, "")
+                );
+
+                const priceB = Number(
+                    b.querySelector(".price").textContent.replace(/[^\d.]/g, "")
+                );
+
+
+                if (sortBy === "name") {
+                    return nameA.localeCompare(nameB);
+                }
+
+                if (sortBy === "price-asc") {
+                    return priceA - priceB;
+                }
+
+                if (sortBy === "price-desc") {
+                    return priceB - priceA;
+                }
+
+                return group.items.indexOf(a) - group.items.indexOf(b);
+
+            });
+
+
+            // Hide products that don't match
+            group.items.forEach(function (item) {
+
+                item.hidden = !matchingItems.includes(item);
+
+            });
+
+
+            // Display matching products in the new order
+            matchingItems.forEach(function (item) {
+
+                group.section.appendChild(item);
+
+            });
+
+        });
+
+    }
+
+
+    // Listen for search input
+    searchInput.addEventListener("input", updateMenu);
+
+
+    // Listen for sorting changes
+    sortSelect.addEventListener("change", updateMenu);
+
+
+    // Initial menu display
+    updateMenu();
+
+});

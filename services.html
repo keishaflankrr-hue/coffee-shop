@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>My First Webpage</title>
+    <title>matcha & coffee menu </title>
+    <meta name="description"
+    content ="Explore Wabi Sabi's menu, featuring a variety of espresso drinks, matcha lattes, and specialty beverages crafted with care in Pretoria East.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -21,51 +23,13 @@
                 <li><a href="services.html" aria-current="page">Menu</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <input type="text" id="searchInput" placeholder="Search items...">
-                <select id="sortSelect">
-                    <option value="name">Sort by Name</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                </select>
-                <ul id="itemList"></ul>
-
-                <script>
 
 
-                    const searchInput = document.getElementById("searchInput");
-                    const sortSelect = document.getElementById("sortSelect");
-                    const itemList = document.getElementById("itemList");
 
-                    function updateDisplay() {
-                        const query = searchInput.value.toLowerCase().trim();
-                        const sortBy = sortSelect.value;
 
-                        // 1. Filter
-                        let result = items.filter(item =>
-                            item.name.toLowerCase().includes(query)
-                        );
 
-                        // 2. Sort
-                        if (sortBy === "name") {
-                            result.sort((a, b) => a.name.localeCompare(b.name));
-                        } else if (sortBy === "price-asc") {
-                            result.sort((a, b) => a.price - b.price);
-                        } else if (sortBy === "price-desc") {
-                            result.sort((a, b) => b.price - a.price);
-                        }
+                
 
-                        // 3. Render
-                        itemList.innerHTML = result
-                            .map(item => `<li>${item.name} - $${item.price}</li>`)
-                            .join("");
-                    }
-
-                    searchInput.addEventListener("input", updateDisplay);
-                    sortSelect.addEventListener("change", updateDisplay);
-
-                    // Initial render
-                    updateDisplay();
-                </script>
             </ul>
         </nav>
     </header>
@@ -74,6 +38,32 @@
     <main>
 
         <h1>Our Menu</h1>
+        <!-- MENU SEARCH AND SORT OPTIONS -->
+
+        <div class="menu-tools">
+
+            <input 
+            type="search"
+            id="menu search"
+            placeholder="search our menu..."
+            aria-label="search menu" 
+            
+
+                <select  id="menu-sort" aria-label="sort menu">
+
+                    <option value="default">Original order</option>
+
+                    <option value="name">Name A-Z</option>
+
+                    <option value="price-asc">Price: Low to High</option>
+
+                    <option value="price-desc">Price: High to Low</option>
+
+                </select>
+
+            </div>
+
+        </div>
         <p class="menu-intro">
             A small, simple menu of matcha and coffee, made with care.
         </p>
@@ -281,7 +271,7 @@
         <div class="footer-column">
             <h3>Contact Us</h3>
             <ul>
-                <li><a href="contact.html#locations">Locations</a></li>
+                <li><a href="contact.html#location">Locations</a></li>
                 <li><a href="#">Rewards</a></li> <!-- placeholder -->
                 <li><a href="contact.html#faqs">FAQs</a></li>
                 <li><a href="#">Social Media</a></li> <!-- placeholder: swap in your Instagram/Facebook URL -->
