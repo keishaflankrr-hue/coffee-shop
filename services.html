@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>matcha & coffee menu </title>
     <meta name="description"
-    content ="Explore Wabi Sabi's menu, featuring a variety of espresso drinks, matcha lattes, and specialty beverages crafted with care in Pretoria East.">
+        content="Explore Wabi Sabi's menu, featuring a variety of espresso drinks, matcha lattes, and specialty beverages crafted with care in Pretoria East.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -20,6 +20,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
+                <li>,<a href="gallery.html">Gallery</a></li>
                 <li><a href="services.html" aria-current="page">Menu</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -28,7 +29,7 @@
 
 
 
-                
+
 
             </ul>
         </nav>
@@ -42,26 +43,20 @@
 
         <div class="menu-tools">
 
-            <input 
-            type="search"
-            id="menu search"
-            placeholder="search our menu..."
-            aria-label="search menu" 
-            
+            <input type="search" id="menu search" placeholder="search our menu..." aria-label="search menu" <select
+                id="menu-sort" aria-label="sort menu">
 
-                <select  id="menu-sort" aria-label="sort menu">
+            <option value="default">Original order</option>
 
-                    <option value="default">Original order</option>
+            <option value="name">Name A-Z</option>
 
-                    <option value="name">Name A-Z</option>
+            <option value="price-asc">Price: Low to High</option>
 
-                    <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
 
-                    <option value="price-desc">Price: High to Low</option>
+            </select>
 
-                </select>
-
-            </div>
+        </div>
 
         </div>
         <p class="menu-intro">

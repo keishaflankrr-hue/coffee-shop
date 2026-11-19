@@ -1,7 +1,4 @@
-// This file is the behaviour of the website.
-// Each function does one job. It first checks that the matching
-// piece of the page is actually there, so the same file can load
-// on every page without causing an error.
+
 
 document.addEventListener("DOMContentLoaded", function () {
     setupPageAnimation();
@@ -15,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// The page gently fades in when it opens.
+// The fades in when clicked.
 function setupPageAnimation() {
     const main = document.querySelector("main");
 
@@ -89,8 +86,8 @@ function setupServingChoices() {
 
 
 // DRINK POP-UP
-// JavaScript builds the pop-up box, then fills it with the drink
-// the visitor clicked.
+// fills it with the drink when visitor clicks. 
+
 function setupDrinkModal() {
     const items = document.querySelectorAll(".menu-item");
 
@@ -102,16 +99,15 @@ function setupDrinkModal() {
     modal.className = "modal";
     modal.id = "drink-modal";
 
-    const card = document.createElement("div");
-    card.className = "modal-card";
+    const card = document.createElement("div"); card.className = "modal-card";
     card.setAttribute("role", "dialog");
     card.setAttribute("aria-modal", "true");
     card.setAttribute("aria-labelledby", "drink-modal-title");
 
     const closeButton = document.createElement("button");
-    closeButton.type = "button";
+closeButton.type = "button";
     closeButton.className = "modal-close";
-    closeButton.textContent = "Close";
+ closeButton.textContent = "Close";
 
     const title = document.createElement("h2");
     title.id = "drink-modal-title";
@@ -184,7 +180,7 @@ function setupAccordion() {
 
 
 // MAP
-// Leaflet draws a map in the empty box on the contact page.
+//  draws a map in the empty box on the contact page.
 function setupMap() {
     const mapContainer = document.getElementById("wabi-map");
 
@@ -254,99 +250,135 @@ function setupEnquiryForm() {
 }
 
 
-// GALLERY AND LIGHTBOX
-// The photo grid is built from a list. A click opens the big photo
-// in a layer on top of the page.
-function setupGallery() {
-    const gallery = document.querySelector("#gallery");
+// 
+// IMAGE GALLERY AND LIGHTBOX
+// 
 
-    if (!gallery) {
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Select gallery elements
+    const gallery = document.querySelector(".gallery-grid");
+
+    const lightbox = document.getElementById("lightbox");
+
+    const enlargedImage = document.getElementById("lightbox-image");
+
+    const caption = document.getElementById("lightbox-caption");
+
+    const closeButton = document.getElementById("lightbox-close");
+
+
+    // Check that the gallery elements exist
+    if (!gallery || !lightbox || !enlargedImage ||
+        !caption || !closeButton) {
         return;
     }
 
-    const photos = [
-        {
-            src: "images/matcha bubbles.jpg",
-            alt: "A matcha drink with bubbles on a wooden table"
-        },
-        {
-            src: "images/barista.jpg",
-            alt: "A barista preparing a drink"
-        },
-        {
-            src: "images/matchapowder.jpg",
-            alt: "A bowl of green matcha powder"
-        },
-        {
-            src: "images/msgic matcha.jpg",
-            alt: "A glass of iced matcha"
-        }
-    ];
 
-    const lightbox = document.createElement("div");
-    lightbox.className = "lightbox";
+    // Remember the last clicked image
+    let previousFocus = null;
 
-    const frame = document.createElement("div");
-    frame.className = "lightbox-frame";
 
-    const closeButton = document.createElement("button");
-    closeButton.type = "button";
-    closeButton.className = "lightbox-close";
-    closeButton.textContent = "Close";
+    // FUNCTION TO OPEN THE LIGHTBOX
 
-    const bigImage = document.createElement("img");
-    bigImage.className = "lightbox-image";
-    bigImage.alt = "";
+    function openLightbox(item) {
 
-    frame.append(closeButton, bigImage);
-    lightbox.appendChild(frame);
-    document.body.appendChild(lightbox);
+        const image = item.querySelector("img");
 
-    function closeLightbox() {
-        lightbox.classList.remove("is-open");
+        if (!image) return;
+
+        previousFocus = item;
+
+        // Display the selected image
+        enlargedImage.src = item.dataset.full || image.src;
+
+        // Display image description
+        enlargedImage.alt = image.alt;
+
+        // Display caption
+        caption.textContent = item.dataset.caption || image.alt;
+
+        // Show lightbox
+        lightbox.hidden = false;
+
+        // Prevent background scrolling
+        document.body.classList.add("lightbox-open");
+
+        // Focus close button
+        closeButton.focus();
+
     }
 
-    photos.forEach(function (photo) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "gallery-item";
 
-        const image = document.createElement("img");
-        image.src = photo.src;
-        image.alt = photo.alt;
+    // FUNCTION TO CLOSE THE LIGHTBOX
 
-        button.appendChild(image);
-        gallery.appendChild(button);
+    function closeLightbox() {
 
-        button.addEventListener("click", function () {
-            bigImage.src = photo.src;
-            bigImage.alt = photo.alt;
-            lightbox.classList.add("is-open");
-            closeButton.focus();
-        });
+        lightbox.hidden = true;
+
+        document.body.classList.remove("lightbox-open");
+
+        // Clear enlarged image
+        enlargedImage.src = "";
+
+        // Return focus to previously selected image
+        if (previousFocus) {
+            previousFocus.focus();
+        }
+
+    }
+
+
+    // CLICK AN IMAGE TO OPEN IT
+
+    gallery.addEventListener("click", function (event) {
+
+        const item = event.target.closest(".gallery-item");
+
+        if (!item) return;
+
+        openLightbox(item);
+
     });
 
-    closeButton.addEventListener("click", closeLightbox);
+
+    // CLICK CLOSE BUTTON
+
+    closeButton.addEventListener("click", function () {
+
+        closeLightbox();
+
+    });
+
+
+    // CLICK OUTSIDE IMAGE TO CLOSE
 
     lightbox.addEventListener("click", function (event) {
+
         if (event.target === lightbox) {
+
             closeLightbox();
+
         }
+
     });
+
+
+    // PRESS ESCAPE TO CLOSE
 
     document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            closeLightbox();
-        }
-    });
-}
-const products = [
-  { name: "Vanilla Matcha ", category: "Matcha ", price: 50 },
-  { name: "Hibiscus Matcha", category: "Matcha ", price: 40 },
-  { name: "matcha", category: "Electronics", price: 85 }
-];
 
-// Filter by category and search text (case-insensitive)
+        if (event.key === "Escape" && !lightbox.hidden) {
+
+            closeLightbox();
+
+        }
+
+    });
+
+});
+
+// Filter by category and search text 
 const searchText = "mouse";
 const selectedCategory = "Electronics";
 
@@ -356,7 +388,7 @@ const filtered = products.filter(item => {
   return matchesCategory && matchesSearch;
 });
 
-// // MENU SEARCH AND SORT// 
+ // MENU SEARCH AND SORT// 
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -394,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         menuGroups.forEach(function (group) {
 
-            // Filter menu items
+         // Filter menu items
             const matchingItems = group.items.filter(function (item) {
 
                 return item.textContent.toLowerCase().includes(query);
@@ -424,11 +456,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (sortBy === "price-asc") {
                     return priceA - priceB;
-                }
+              }
 
-                if (sortBy === "price-desc") {
+            if (sortBy === "price-desc") {
                     return priceB - priceA;
-                }
+              }
 
                 return group.items.indexOf(a) - group.items.indexOf(b);
 
