@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Contact | Wabi Sabi Coffee Shop</title>
+    <title>Opening Hours &amp; Directions | Wabi Sabi Coffee Shop</title>
+    <meta name="description" content="Find Wabi Sabi Coffee Shop in Pretoria East: opening hours, address, phone, an interactive map with directions, and answers to common questions.">
+    <link rel="canonical" href="https://keishaflankrr-hue.github.io/coffee-shop/contact.html">
+    <meta name="theme-color" content="#354024">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Social sharing previews (Open Graph / Twitter) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wabi Sabi Coffee Shop">
+    <meta property="og:locale" content="en_ZA">
+    <meta property="og:title" content="Opening Hours &amp; Directions | Wabi Sabi Coffee Shop">
+    <meta property="og:description" content="Find Wabi Sabi Coffee Shop in Pretoria East: opening hours, address, phone, an interactive map with directions, and answers to common questions.">
+    <meta property="og:url" content="https://keishaflankrr-hue.github.io/coffee-shop/contact.html">
+    <meta property="og:image" content="https://keishaflankrr-hue.github.io/coffee-shop/images/social-share-matcha-foam.jpg">
+    <meta property="og:image:alt" content="Close-up of bright green matcha foam">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="stylesheet" href="css/style.css">
+    <!-- Structured data for local search results.
+         TODO: the address and phone are the same placeholders shown on the page. Update them to the real details. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Wabi Sabi Coffee Shop",
+      "description": "A quiet matcha and coffee shop in Pretoria East.",
+      "url": "https://keishaflankrr-hue.github.io/coffee-shop/",
+      "image": "https://keishaflankrr-hue.github.io/coffee-shop/images/social-share-matcha-foam.jpg",
+      "telephone": "123-456-7890",
+      "menu": "https://keishaflankrr-hue.github.io/coffee-shop/menu.html",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Example Street",
+        "addressLocality": "Pretoria East",
+        "addressRegion": "Gauteng",
+        "addressCountry": "ZA"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+      ]
+    }
+    </script>
     <!-- Leaflet map library (styles) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -20,7 +61,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Menu</a></li>
+                <li><a href="menu.html">Menu</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
@@ -32,11 +73,13 @@
     <!-- MAIN CONTENT -->
     <main>
 
-        <h1>Contact Us</h1>
+        <h1>Contact Wabi Sabi Coffee Shop</h1>
 
         <!-- Shop contact information -->
         <section class="contact-info">
             <h2>Get in Touch</h2>
+            <p>Questions, ideas or a collaboration in mind? Use our <a href="enquiry.html">enquiry form</a>, or call
+                us on the number below.</p>
 
             <address>
                 <p>
@@ -120,7 +163,7 @@
                     </h3>
                     <div class="accordion-panel" id="faq-3" role="region" aria-labelledby="faq-3-button">
                         <p>Our matcha drinks come hot or iced. You can choose your temperature on the
-                            <a href="services.html">menu page</a>.</p>
+                            <a href="menu.html">matcha and coffee menu</a>.</p>
                     </div>
                 </div>
 
@@ -161,23 +204,23 @@
     <footer class="site-footer">
 
         <div class="footer-column">
-            <h3>About Us</h3>
+            <h2>About Us</h2>
             <ul>
                 <li><a href="about.html">Our Story</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h3>Customer Service</h3>
+            <h2>Customer Service</h2>
             <ul>
-                <li><a href="services.html">Menu</a></li>
+                <li><a href="menu.html">Menu</a></li>
                 <li><a href="#" data-coming-soon>Gift Cards</a></li> <!-- opens a "coming soon" modal (js/script.js) -->
                 <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h3>Contact Us</h3>
+            <h2>Contact Us</h2>
             <ul>
                 <li><a href="contact.html#location">Locations</a></li>
                 <li><a href="#" data-coming-soon>Rewards</a></li>

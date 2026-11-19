@@ -545,7 +545,7 @@ select {
   background: var(--wave-kombu) repeat-x center bottom / 800px 40px;
 }
 
-.site-footer h3 {
+.site-footer h2 {
   margin-bottom: 0.75rem;
   font-size: 1.5rem;
   color: var(--tan);
@@ -1364,6 +1364,41 @@ mark {
 
   main > .menu-toolbar {
     grid-template-columns: 1fr;
+  }
+}
+
+
+/* ---------- 15p. Touch-friendly tap targets ---------- */
+/* On phones, tablets and any touch screen, every link and button gets at least a 44px target. */
+
+@media (max-width: 768px), (pointer: coarse) {
+
+  .logo {
+    min-height: 2.75rem;
+  }
+
+  .nav-links a {
+    min-width: 2.75rem;
+    text-align: center;
+  }
+
+  .site-footer li {
+    margin-bottom: 0;
+  }
+
+  .site-footer a {
+    display: inline-block;
+    min-width: 2.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .menu-tab,
+  .serving-button {
+    min-height: 2.75rem;
+  }
+
+  .serving-button {
+    min-width: 2.75rem;
   }
 }
 

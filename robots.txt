@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://keishaflankrr-hue.github.io/coffee-shop/sitemap.xml

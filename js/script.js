@@ -162,7 +162,7 @@
     if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
 
     var selectors = [
-      '.menu-intro', '.about-content > *', '.contact-info',
+      '.menu-intro', '.home-section', '.about-content > *', '.contact-info',
       '.accordion-item', '.map-section > *', '.enquiry-intro', '.enquiry-form .form-group',
       '.page-intro', '.gallery-item'
     ].join(', ');

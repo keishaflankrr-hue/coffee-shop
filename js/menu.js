@@ -366,7 +366,7 @@
 
   /* ========================================================
      SHAREABLE LINKS: keep the search, sort and tab in the URL
-     e.g. services.html?q=matcha&sort=price-asc&cat=matcha
+     e.g. menu.html?q=matcha&sort=price-asc&cat=matcha
      ======================================================== */
 
   function readUrl() {
